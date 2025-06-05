@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Update diagram
         id: make_diagram
-        should_push: false
+        # Ik kan niet vinden waar ik de should_push: false in de .yml file moet steken
+        # should_push: false
         uses: githubocto/repo-visualizer@0.7.1
         with:
           output_file: "output-diagram.svg"
