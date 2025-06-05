@@ -7,14 +7,15 @@ on:
 jobs:
   get_data:
     runs-on: ubuntu-latest
-    # Ik kan niet vinden waar ik de should_push: false in de .yml file moet steken
-    # should_push: false
     steps:
+      - name: Checkout code
+        uses: actions/checkout@master
       - name: Update diagram
-        id: make_diagram
+        # Ik kan niet vinden waar ik de should_push: false in de .yml file moet steken
+        # should_push: false
         uses: githubocto/repo-visualizer@0.7.1
         with:
-          output_file: "output-diagram.svg"
-          artifact_name: "my-diagram"
+          output_file: "images/diagram.svg"
+          excluded_paths: "dist,node_modules"
 
 
