@@ -1,2 +1,24 @@
-- name: Repo Visualizer
-  uses: githubocto/repo-visualizer@0.9.1
+name: Create diagram
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+jobs:
+  get_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update diagram
+        id: make_diagram
+        should_push: false
+        uses: githubocto/repo-visualizer@0.7.1
+        with:
+          output_file: "output-diagram.svg"
+          artifact_name: "my-diagram"
+      - name: Get artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: "my-diagram"
+          path: "downloads"
+
+
